@@ -457,7 +457,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (005,001,001,001,'Administrador','Administrador',1,'000','Administrador',001,'Administrador');
+INSERT INTO `usuarios` VALUES (005,001,001,001,'Administrador','Admin',1,'000','Administrador',001,'Administrador');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
