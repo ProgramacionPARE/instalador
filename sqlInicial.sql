@@ -30,7 +30,7 @@ CREATE TABLE `boleto_cancelado` (
   `id_auto` int(11) DEFAULT NULL,
   `razon` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,6 +39,7 @@ CREATE TABLE `boleto_cancelado` (
 
 LOCK TABLES `boleto_cancelado` WRITE;
 /*!40000 ALTER TABLE `boleto_cancelado` DISABLE KEYS */;
+INSERT INTO `boleto_cancelado` VALUES (1,9,34,'11'),(2,10,35,'14'),(3,11,39,'qaz'),(4,12,41,'14');
 /*!40000 ALTER TABLE `boleto_cancelado` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -91,7 +92,7 @@ CREATE TABLE `caja` (
 
 LOCK TABLES `caja` WRITE;
 /*!40000 ALTER TABLE `caja` DISABLE KEYS */;
-INSERT INTO `caja` VALUES (1,23,1,'200',1000);
+INSERT INTO `caja` VALUES (1,0,1,'200',1000);
 /*!40000 ALTER TABLE `caja` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -136,8 +137,9 @@ CREATE TABLE `detalles_movimiento` (
   `precio_unitario` decimal(10,0) DEFAULT NULL,
   `importe` decimal(10,0) DEFAULT NULL,
   `id_turno` int(11) DEFAULT NULL,
+  `serie` varchar(2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -146,7 +148,7 @@ CREATE TABLE `detalles_movimiento` (
 
 LOCK TABLES `detalles_movimiento` WRITE;
 /*!40000 ALTER TABLE `detalles_movimiento` DISABLE KEYS */;
-INSERT INTO `detalles_movimiento` VALUES (4,'Boleto','00:01-00:15',1,18,18,3);
+INSERT INTO `detalles_movimiento` VALUES (9,'Boleto','00:01-00:15',2,20,40,10,'A'),(10,'Boleto','00:01-00:15',3,20,60,11,'A'),(11,'Cancelado','',1,0,0,12,'A'),(12,'Boleto','00:01-00:15',1,20,20,12,'A');
 /*!40000 ALTER TABLE `detalles_movimiento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -164,6 +166,7 @@ CREATE TABLE `estacionamiento` (
   `caseta_actual` int(11) DEFAULT NULL,
   `id_tarifa` int(11) DEFAULT NULL,
   `direccion` varchar(45) DEFAULT NULL,
+  `tipo` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -174,7 +177,7 @@ CREATE TABLE `estacionamiento` (
 
 LOCK TABLES `estacionamiento` WRITE;
 /*!40000 ALTER TABLE `estacionamiento` DISABLE KEYS */;
-INSERT INTO `estacionamiento` VALUES (1,34,'Oficinas',1,1,'Montes Urales');
+INSERT INTO `estacionamiento` VALUES (1,34,'Oficinas',1,1,'Montes Urales','Autoservicio');
 /*!40000 ALTER TABLE `estacionamiento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -200,7 +203,7 @@ CREATE TABLE `progresivos` (
 
 LOCK TABLES `progresivos` WRITE;
 /*!40000 ALTER TABLE `progresivos` DISABLE KEYS */;
-INSERT INTO `progresivos` VALUES (1,'BOLETO','85148',1),(2,'PERDIDO','52',1),(3,'RETIRO_PARCIAL','106',1),(4,'RECIBO_PAGO','6',1);
+INSERT INTO `progresivos` VALUES (1,'BOLETO','85183',1),(2,'PERDIDO','52',1),(3,'RETIRO_PARCIAL','115',1),(4,'RECIBO_PAGO','11',1);
 /*!40000 ALTER TABLE `progresivos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -248,7 +251,7 @@ CREATE TABLE `retiro_parcial` (
   `monto` decimal(10,0) DEFAULT NULL,
   `monto_real` decimal(10,0) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -257,7 +260,7 @@ CREATE TABLE `retiro_parcial` (
 
 LOCK TABLES `retiro_parcial` WRITE;
 /*!40000 ALTER TABLE `retiro_parcial` DISABLE KEYS */;
-INSERT INTO `retiro_parcial` VALUES (6,105,'2014-09-09','14:12:43',1,3,15,18);
+INSERT INTO `retiro_parcial` VALUES (6,105,'2014-09-09','14:12:43',1,3,15,18),(7,106,'2014-09-12','15:51:05',1,6,300,155),(8,107,'2014-09-12','15:57:18',1,7,-125,-125),(9,108,'2014-09-12','16:03:03',1,8,40,40),(10,109,'2014-09-12','16:16:04',1,8,0,0),(11,110,'2014-09-12','16:40:00',1,9,60,60),(12,111,'2014-09-12','16:55:31',1,10,20,20),(13,112,'2014-09-12','17:05:02',1,11,40,40),(14,113,'2014-09-12','17:07:18',1,12,20,20),(15,114,'2014-09-12','17:13:19',1,12,0,0);
 /*!40000 ALTER TABLE `retiro_parcial` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -278,7 +281,7 @@ CREATE TABLE `tarifa` (
   `hora_inicial` varchar(10) DEFAULT NULL,
   `descripcion` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -287,7 +290,7 @@ CREATE TABLE `tarifa` (
 
 LOCK TABLES `tarifa` WRITE;
 /*!40000 ALTER TABLE `tarifa` DISABLE KEYS */;
-INSERT INTO `tarifa` VALUES (1,4,'10.0@4.0@4.0@2.0',20,0,200,'1','Tarifa regular');
+INSERT INTO `tarifa` VALUES (1,4,'10.0@4.0@4.0@2.0',20,0,200,'1','Tarifa regular'),(4,4,'0.0@0.0@0.0@0.0',0,0,200,'0','Troquel');
 /*!40000 ALTER TABLE `tarifa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -300,8 +303,9 @@ DROP TABLE IF EXISTS `tbl_entradas_parking`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbl_entradas_parking` (
   `id` int(6) unsigned zerofill NOT NULL AUTO_INCREMENT,
-  `entrada_salida` char(1) DEFAULT 'E' COMMENT '(E) - PARA ENTRADA   \r(\nS) - PARA SALIDA',
+  `serie` char(2) DEFAULT '0',
   `matricula` varchar(10) DEFAULT NULL,
+  `entrada_salida` char(1) DEFAULT 'E' COMMENT '(E) - PARA ENTRADA   \r(\nS) - PARA SALIDA',
   `id_tarifa` int(6) unsigned zerofill DEFAULT NULL,
   `tarifa` double DEFAULT NULL,
   `progresivo` char(6) DEFAULT NULL,
@@ -334,7 +338,7 @@ CREATE TABLE `tbl_entradas_parking` (
   `clave` char(6) DEFAULT NULL,
   `recibo` varchar(5) DEFAULT 'NO',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -343,7 +347,7 @@ CREATE TABLE `tbl_entradas_parking` (
 
 LOCK TABLES `tbl_entradas_parking` WRITE;
 /*!40000 ALTER TABLE `tbl_entradas_parking` DISABLE KEYS */;
-INSERT INTO `tbl_entradas_parking` VALUES (000001,'S','125',000001,NULL,'085142','2014-09-09','13:12:41','2014-09-09','13:16:43',7,0,'N',NULL,1,0,0,4,18,0,0,0,0,0,NULL,1,1,0,'',NULL,NULL,0,'BOWYJP','SI'),(000002,'S','567',000001,NULL,'085143','2014-09-09','13:18:07','2014-09-09','13:23:19',7,0,'N',NULL,1,0,0,5,0,0,0,0,0,0,NULL,1,1,0,'',NULL,NULL,1,'FXNIAE','NO'),(000003,'S','123456',000001,NULL,'085144','2014-09-09','13:24:41','2014-09-09','13:27:34',7,0,'N',NULL,1,0,0,2,200,0,0,0,0,0,NULL,1,1,1,'P','P','P',0,'XQCNGD','SI'),(000004,'S','1QAZ',000001,NULL,'085145','2014-09-09','14:11:30','2014-09-09','14:12:23',5,0,'N',NULL,1,0,0,0,18,0,0,0,0,0,NULL,3,3,0,'',NULL,NULL,0,'KPILUK','NO'),(000005,'S','QAZ',000001,NULL,'085146','2014-09-09','16:07:04','2014-09-09','16:07:26',7,0,'N',NULL,1,0,0,0,20,0,0,0,0,0,NULL,4,4,0,'',NULL,NULL,0,'UFGXNT','NO'),(000006,'E','QWA12',000001,NULL,'085147','2014-09-09','16:13:20',NULL,'00:00:00',7,0,'N',NULL,1,0,NULL,NULL,0,0,0,0,0,0,NULL,4,NULL,0,'',NULL,NULL,0,'AGQKVU','NO');
+INSERT INTO `tbl_entradas_parking` VALUES (000037,'A','','S',000001,NULL,'000012','2014-09-12','17:00:00','2014-09-12','17:03:36',5,0,'N',NULL,1,0,0,3,20,0,0,0,0,0,NULL,11,11,0,'',NULL,NULL,0,'FTTKB','NO'),(000038,'A','','S',000001,NULL,'000123','2014-09-12','17:00:00','2014-09-12','17:00:59',5,0,'N',NULL,1,0,0,0,20,0,0,0,0,0,NULL,11,11,0,'',NULL,NULL,0,'AYUYB','NO'),(000039,'A','','S',000001,NULL,'001235','2014-09-12','17:04:00','2014-09-12','17:04:39',5,0,'N',NULL,1,0,0,0,0,0,0,0,0,0,NULL,11,11,0,'',NULL,NULL,3,'TRNWL','NO'),(000040,'A','','S',000001,NULL,'000001','2014-09-12','17:06:00','2014-09-12','17:06:28',5,0,'N',NULL,1,0,0,0,20,0,0,0,0,0,NULL,12,12,0,'',NULL,NULL,0,'USOVG','NO'),(000041,'A','','S',000001,NULL,'000002','2014-09-12','17:06:00','2014-09-12','17:06:42',5,0,'N',NULL,1,0,0,0,0,0,0,0,0,0,NULL,12,12,0,'',NULL,NULL,4,'CVKAN','NO');
 /*!40000 ALTER TABLE `tbl_entradas_parking` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -422,7 +426,7 @@ CREATE TABLE `turnos` (
   `id_operador` int(11) DEFAULT '0',
   `no_bol` int(11) DEFAULT '0',
   PRIMARY KEY (`id_turno`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -431,7 +435,7 @@ CREATE TABLE `turnos` (
 
 LOCK TABLES `turnos` WRITE;
 /*!40000 ALTER TABLE `turnos` DISABLE KEYS */;
-INSERT INTO `turnos` VALUES (3,'Primer turno','2014-09-09','2014-09-09','14:10:53','14:12:47',85145,85146,0,0,0,1,0,18,5,1),(4,'Primer turno','2014-09-09',NULL,'16:07:00',NULL,85146,85148,0,0,0,1,0,20,7,2);
+INSERT INTO `turnos` VALUES (11,'Primer turno','2014-09-12','2014-09-12','16:56:59','17:05:06',85178,85181,0,1,0,2,0,60,5,3),(12,'Segundo turno','2014-09-12','2014-09-12','17:06:05','17:13:28',85181,85183,0,1,0,1,0,20,5,2);
 /*!40000 ALTER TABLE `turnos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -477,4 +481,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-09-10 13:15:16
+-- Dump completed on 2014-09-12 17:49:36
