@@ -39,7 +39,6 @@ CREATE TABLE `boleto_cancelado` (
 
 LOCK TABLES `boleto_cancelado` WRITE;
 /*!40000 ALTER TABLE `boleto_cancelado` DISABLE KEYS */;
-INSERT INTO `boleto_cancelado` VALUES (1,9,34,'11'),(2,10,35,'14'),(3,11,39,'qaz'),(4,12,41,'14');
 /*!40000 ALTER TABLE `boleto_cancelado` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -92,7 +91,7 @@ CREATE TABLE `caja` (
 
 LOCK TABLES `caja` WRITE;
 /*!40000 ALTER TABLE `caja` DISABLE KEYS */;
-INSERT INTO `caja` VALUES (1,0,1,'200',1000);
+INSERT INTO `caja` VALUES (1,-20,1,'0',1000);
 /*!40000 ALTER TABLE `caja` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -203,7 +202,7 @@ CREATE TABLE `progresivos` (
 
 LOCK TABLES `progresivos` WRITE;
 /*!40000 ALTER TABLE `progresivos` DISABLE KEYS */;
-INSERT INTO `progresivos` VALUES (1,'BOLETO','85183',1),(2,'PERDIDO','52',1),(3,'RETIRO_PARCIAL','115',1),(4,'RECIBO_PAGO','11',1);
+INSERT INTO `progresivos` VALUES (1,'BOLETO','1',1),(2,'PERDIDO','1',1),(3,'RETIRO_PARCIAL','1',1),(4,'RECIBO_PAGO','2',1);
 /*!40000 ALTER TABLE `progresivos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -260,7 +259,6 @@ CREATE TABLE `retiro_parcial` (
 
 LOCK TABLES `retiro_parcial` WRITE;
 /*!40000 ALTER TABLE `retiro_parcial` DISABLE KEYS */;
-INSERT INTO `retiro_parcial` VALUES (6,105,'2014-09-09','14:12:43',1,3,15,18),(7,106,'2014-09-12','15:51:05',1,6,300,155),(8,107,'2014-09-12','15:57:18',1,7,-125,-125),(9,108,'2014-09-12','16:03:03',1,8,40,40),(10,109,'2014-09-12','16:16:04',1,8,0,0),(11,110,'2014-09-12','16:40:00',1,9,60,60),(12,111,'2014-09-12','16:55:31',1,10,20,20),(13,112,'2014-09-12','17:05:02',1,11,40,40),(14,113,'2014-09-12','17:07:18',1,12,20,20),(15,114,'2014-09-12','17:13:19',1,12,0,0);
 /*!40000 ALTER TABLE `retiro_parcial` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -290,7 +288,7 @@ CREATE TABLE `tarifa` (
 
 LOCK TABLES `tarifa` WRITE;
 /*!40000 ALTER TABLE `tarifa` DISABLE KEYS */;
-INSERT INTO `tarifa` VALUES (1,4,'10.0@4.0@4.0@2.0',20,0,200,'1','Tarifa regular'),(4,4,'0.0@0.0@0.0@0.0',0,0,200,'0','Troquel');
+INSERT INTO `tarifa` VALUES (1,4,'10.0@4.0@4.0@2.0',20,0,200,'0','Tarifa regular'),(4,4,'0.0@0.0@0.0@0.0',0,0,200,'0','Troquel');
 /*!40000 ALTER TABLE `tarifa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -338,7 +336,7 @@ CREATE TABLE `tbl_entradas_parking` (
   `clave` char(6) DEFAULT NULL,
   `recibo` varchar(5) DEFAULT 'NO',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -347,7 +345,6 @@ CREATE TABLE `tbl_entradas_parking` (
 
 LOCK TABLES `tbl_entradas_parking` WRITE;
 /*!40000 ALTER TABLE `tbl_entradas_parking` DISABLE KEYS */;
-INSERT INTO `tbl_entradas_parking` VALUES (000037,'A','','S',000001,NULL,'000012','2014-09-12','17:00:00','2014-09-12','17:03:36',5,0,'N',NULL,1,0,0,3,20,0,0,0,0,0,NULL,11,11,0,'',NULL,NULL,0,'FTTKB','NO'),(000038,'A','','S',000001,NULL,'000123','2014-09-12','17:00:00','2014-09-12','17:00:59',5,0,'N',NULL,1,0,0,0,20,0,0,0,0,0,NULL,11,11,0,'',NULL,NULL,0,'AYUYB','NO'),(000039,'A','','S',000001,NULL,'001235','2014-09-12','17:04:00','2014-09-12','17:04:39',5,0,'N',NULL,1,0,0,0,0,0,0,0,0,0,NULL,11,11,0,'',NULL,NULL,3,'TRNWL','NO'),(000040,'A','','S',000001,NULL,'000001','2014-09-12','17:06:00','2014-09-12','17:06:28',5,0,'N',NULL,1,0,0,0,20,0,0,0,0,0,NULL,12,12,0,'',NULL,NULL,0,'USOVG','NO'),(000041,'A','','S',000001,NULL,'000002','2014-09-12','17:06:00','2014-09-12','17:06:42',5,0,'N',NULL,1,0,0,0,0,0,0,0,0,0,NULL,12,12,0,'',NULL,NULL,4,'CVKAN','NO');
 /*!40000 ALTER TABLE `tbl_entradas_parking` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -426,7 +423,7 @@ CREATE TABLE `turnos` (
   `id_operador` int(11) DEFAULT '0',
   `no_bol` int(11) DEFAULT '0',
   PRIMARY KEY (`id_turno`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -435,7 +432,7 @@ CREATE TABLE `turnos` (
 
 LOCK TABLES `turnos` WRITE;
 /*!40000 ALTER TABLE `turnos` DISABLE KEYS */;
-INSERT INTO `turnos` VALUES (11,'Primer turno','2014-09-12','2014-09-12','16:56:59','17:05:06',85178,85181,0,1,0,2,0,60,5,3),(12,'Segundo turno','2014-09-12','2014-09-12','17:06:05','17:13:28',85181,85183,0,1,0,1,0,20,5,2);
+INSERT INTO `turnos` VALUES (14,'Primer turno','2014-09-18',NULL,'12:32:01',NULL,1,2,0,0,0,1,0,0,7,1);
 /*!40000 ALTER TABLE `turnos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -481,4 +478,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-09-12 17:49:36
+-- Dump completed on 2014-09-18 12:40:06
