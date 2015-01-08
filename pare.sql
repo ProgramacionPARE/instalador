@@ -26,7 +26,6 @@ DROP TABLE IF EXISTS `autos`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `autos` (
   `id` int(6) unsigned zerofill NOT NULL AUTO_INCREMENT,
-  `id_remoto` varchar(50) DEFAULT NULL,
   `matricula` varchar(10) DEFAULT NULL,
   `progresivo` char(6) DEFAULT NULL,
   `entrada_salida` char(1) DEFAULT 'E' COMMENT '(E) - PARA ENTRADA   \r(\nS) - PARA SALIDA',
@@ -61,6 +60,9 @@ CREATE TABLE `autos` (
   `serie` char(2) DEFAULT '0',
   `notas` varchar(80) DEFAULT NULL,
   `id_cliente` int(5) DEFAULT NULL,
+  `estado_servidor` varchar(4) DEFAULT '0',
+  `id_remoto` varchar(45) DEFAULT NULL,
+  `boleto_oficina` varchar(4) CHARACTER SET dec8 DEFAULT 'NO',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -228,8 +230,34 @@ CREATE TABLE `caseta` (
 
 LOCK TABLES `caseta` WRITE;
 /*!40000 ALTER TABLE `caseta` DISABLE KEYS */;
-INSERT INTO `caseta` VALUES (1,'Caseta 1',1,1,'0 ');
+INSERT INTO `caseta` VALUES (1,'Caseta 1',1,1,'B C');
 /*!40000 ALTER TABLE `caseta` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `descuentos`
+--
+
+DROP TABLE IF EXISTS `descuentos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `descuentos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `folio` varchar(45) DEFAULT NULL,
+  `descuento` decimal(10,0) DEFAULT NULL,
+  `activo` varchar(20) DEFAULT NULL,
+  `clave` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `descuentos`
+--
+
+LOCK TABLES `descuentos` WRITE;
+/*!40000 ALTER TABLE `descuentos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `descuentos` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -256,7 +284,7 @@ CREATE TABLE `detalle_turno` (
   `no_bol_contra` int(11) DEFAULT '0',
   `serie` varchar(45) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -265,6 +293,7 @@ CREATE TABLE `detalle_turno` (
 
 LOCK TABLES `detalle_turno` WRITE;
 /*!40000 ALTER TABLE `detalle_turno` DISABLE KEYS */;
+INSERT INTO `detalle_turno` VALUES (4,'54aed9b333024d3917985648',1050,1053,0,0,0,3,0,368,3,4,0,0,'0'),(5,'54aedd4c33024d391798564d',1001,1001,0,0,0,2,0,162,0,5,0,0,'B'),(6,'54aedd4c33024d391798564e',1,1,0,0,0,0,0,0,0,5,0,0,'C');
 /*!40000 ALTER TABLE `detalle_turno` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -296,7 +325,7 @@ CREATE TABLE `estacionamiento` (
 
 LOCK TABLES `estacionamiento` WRITE;
 /*!40000 ALTER TABLE `estacionamiento` DISABLE KEYS */;
-INSERT INTO `estacionamiento` VALUES (1,34,'N. HEROES No.123',1,1,'Niños heroes No. 123','Valet','magdalena@pare.com.mx','Ib1EN0T]7E;R2o-','546fa507ed129aca07353d66');
+INSERT INTO `estacionamiento` VALUES (1,34,'Niños Heroes',1,1,'Museo de antropologia S/N','Autoservicio','admin@pare.com.mx','5UxM0k','54aebf1f33024d3917985641');
 /*!40000 ALTER TABLE `estacionamiento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -313,7 +342,7 @@ CREATE TABLE `progresivos` (
   `ultimo_progresivo` char(12) DEFAULT NULL,
   `id_cajero` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -322,7 +351,7 @@ CREATE TABLE `progresivos` (
 
 LOCK TABLES `progresivos` WRITE;
 /*!40000 ALTER TABLE `progresivos` DISABLE KEYS */;
-INSERT INTO `progresivos` VALUES (1,'0','4449',1),(2,'PERDIDO','3',1),(3,'RETIRO_PARCIAL','180',1),(4,'RECIBO_PAGO','2418',1);
+INSERT INTO `progresivos` VALUES (1,'0','1',1),(2,'PERDIDO','1',1),(3,'RETIRO_PARCIAL','1',1),(4,'RECIBO_PAGO','1',1);
 /*!40000 ALTER TABLE `progresivos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -423,7 +452,6 @@ DROP TABLE IF EXISTS `turnos`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `turnos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_remoto` varchar(40) DEFAULT NULL,
   `tipo_turno` varchar(45) DEFAULT NULL,
   `fecha_apertura` varchar(45) DEFAULT NULL,
   `fecha_cierre` varchar(45) DEFAULT NULL,
@@ -432,6 +460,8 @@ CREATE TABLE `turnos` (
   `id_empleado_apertura` int(11) DEFAULT '0',
   `id_empleado_cierre` int(11) DEFAULT '0',
   `activo` varchar(4) DEFAULT 'NO',
+  `id_remoto` varchar(45) DEFAULT NULL,
+  `estado_servidor` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -487,4 +517,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-11-26 18:29:35
+-- Dump completed on 2015-01-08 16:30:21

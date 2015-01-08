@@ -39,8 +39,33 @@ CREATE TABLE `configuracion` (
 
 LOCK TABLES `configuracion` WRITE;
 /*!40000 ALTER TABLE `configuracion` DISABLE KEYS */;
-INSERT INTO `configuracion` VALUES (1,'127.0.0.1','caja','localhost:9000');
+INSERT INTO `configuracion` VALUES (1,'127.0.0.1','caja','http://localhost:9000/');
 /*!40000 ALTER TABLE `configuracion` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `estacionamientos`
+--
+
+DROP TABLE IF EXISTS `estacionamientos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `estacionamientos` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(45) DEFAULT NULL,
+  `ip` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `estacionamientos`
+--
+
+LOCK TABLES `estacionamientos` WRITE;
+/*!40000 ALTER TABLE `estacionamientos` DISABLE KEYS */;
+INSERT INTO `estacionamientos` VALUES (1,'Niños heroes','25.144.100.146');
+/*!40000 ALTER TABLE `estacionamientos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -52,4 +77,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-11-26 18:29:01
+-- Dump completed on 2015-01-08 16:30:39
