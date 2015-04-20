@@ -9,12 +9,17 @@ Este repositorio cuenta con los archvios necesarios para instalar la aplicacion 
 
 ## Como subir un cambio.
 
-1 Despues de compilar la aplicacion de escritorio se generara de nuevo el archivo PARE.jar, con los nuevos cambios.
-2 Desde la consola navegamos a  escritorio/dist/
-3 Dentro de dist vamos a agregar el nuevo cambio con
-		git add PARE.jar
-4 Realizamos el commit
-		git commit -m "Descripcion del cambio"
-5 Subimos el archivo al repositorio
-		git push origin master
-
+- Despues de compilar la aplicacion de escritorio se generara de nuevo el archivo PARE.jar, con los nuevos cambios.
+- Desde la consola navegamos a  escritorio/dist/
+- Dentro de dist vamos a agregar el nuevo cambio con
+```sh
+git add PARE.jar
+```
+- Realizamos el commit
+```sh
+git commit -m "Descripcion del cambio"
+```
+- Subimos el archivo al repositorio
+```sh
+git push origin master
+```
